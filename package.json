@@ -1,0 +1,41 @@
+{
+  "name": "arx-mod-unshittify-puzzles",
+  "version": "1.0.0",
+  "description": "A mod that aims to improve the user experience of the puzzles of Arx Fatalis",
+  "main": "src/index.ts",
+  "type": "module",
+  "scripts": {
+    "generate": "tsc && tsc-alias && node ./dist/src/index.js",
+    "rungame": "arx-level-generator --rungame",
+    "rungame:noclip": "arx-level-generator --rungame --noclip",
+    "dev": "npm run generate && npm run rungame",
+    "dev:noclip": "npm run generate && npm run rungame:noclip",
+    "prod": "export mode=\"production\" && npm run generate && npm run rungame",
+    "release": "export uncompressedFTS=\"false\" && export outputDir=\"./output\" && export mode=\"production\" && rm -rf cache && rm -rf output && npm run generate"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/meszaros-lajos-gyorgy/arx-mod-unshittify-puzzles.git"
+  },
+  "keywords": [
+    "arx-fatalis"
+  ],
+  "author": "Lajos Mészáros <m_lajos@hotmail.com>",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/meszaros-lajos-gyorgy/arx-mod-unshittify-puzzles/issues"
+  },
+  "homepage": "https://github.com/meszaros-lajos-gyorgy/arx-mod-unshittify-puzzles#readme",
+  "dependencies": {
+    "arx-convert": "^9.0.0",
+    "arx-level-generator": "^19.0.0",
+    "three": "^0.158.0"
+  },
+  "devDependencies": {
+    "@trivago/prettier-plugin-sort-imports": "^4.3.0",
+    "@types/node": "^20.12.12",
+    "@types/three": "^0.158.0",
+    "tsc-alias": "^1.8.10",
+    "typescript": "^5.4.5"
+  }
+}
