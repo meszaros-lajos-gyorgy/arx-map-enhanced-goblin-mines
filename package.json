@@ -28,7 +28,7 @@
   "homepage": "https://github.com/meszaros-lajos-gyorgy/arx-mod-unshittify-puzzles#readme",
   "dependencies": {
     "arx-convert": "^9.0.0",
-    "arx-level-generator": "^19.0.0",
+    "arx-level-generator": "^20.0.0-alpha.0",
     "three": "^0.158.0"
   },
   "devDependencies": {
