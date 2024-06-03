@@ -1,7 +1,7 @@
 {
-  "name": "arx-mod-unshittify-puzzles",
+  "name": "arx-map-enhanced-goblin-mines",
   "version": "1.0.0",
-  "description": "A mod that aims to improve the user experience of the puzzles of Arx Fatalis",
+  "description": "A mod that enhances the abandoned goblin mines of Arx Fatalis",
   "main": "src/index.ts",
   "type": "module",
   "scripts": {
@@ -11,11 +11,11 @@
     "dev": "npm run generate && npm run rungame",
     "dev:noclip": "npm run generate && npm run rungame:noclip",
     "prod": "export mode=\"production\" && npm run generate && npm run rungame",
-    "release": "export uncompressedFTS=\"false\" && export outputDir=\"./output\" && export mode=\"production\" && rm -rf cache && rm -rf output && npm run generate"
+    "release": "export levelIdx=\"15\" && export uncompressedFTS=\"false\" && export outputDir=\"./output\" && export mode=\"production\" && rm -rf cache && rm -rf output && npm run generate"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/meszaros-lajos-gyorgy/arx-mod-unshittify-puzzles.git"
+    "url": "git+https://github.com/meszaros-lajos-gyorgy/arx-map-enhanced-goblin-mines.git"
   },
   "keywords": [
     "arx-fatalis"
@@ -23,9 +23,9 @@
   "author": "Lajos Mészáros <m_lajos@hotmail.com>",
   "license": "GPL-3.0-or-later",
   "bugs": {
-    "url": "https://github.com/meszaros-lajos-gyorgy/arx-mod-unshittify-puzzles/issues"
+    "url": "https://github.com/meszaros-lajos-gyorgy/arx-map-enhanced-goblin-mines/issues"
   },
-  "homepage": "https://github.com/meszaros-lajos-gyorgy/arx-mod-unshittify-puzzles#readme",
+  "homepage": "https://github.com/meszaros-lajos-gyorgy/arx-map-enhanced-goblin-mines#readme",
   "dependencies": {
     "arx-convert": "^9.0.0",
     "arx-level-generator": "^20.0.0-alpha.0",

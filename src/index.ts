@@ -7,21 +7,20 @@ import { Box3, MathUtils } from 'three'
 // ------------------------------------------------
 // loading the map
 
-const level15Settings = new Settings({
-  levelIdx: 15,
-})
-
-const level15 = await ArxMap.fromOriginalLevel(15, level15Settings)
+const settings = new Settings()
+const map = await ArxMap.fromOriginalLevel(15, settings)
 
 // ------------------------------------------------
 // moving the player to the place I work
 
-level15.player.position.add(new Vector3(1450, 350, 3300))
-level15.player.orientation.y += MathUtils.degToRad(-90)
+if (settings.mode === 'development') {
+  map.player.position.add(new Vector3(1450, 350, 3300))
+  map.player.orientation.y += MathUtils.degToRad(-90)
 
-const spawnMarker = level15.entities.findByRef('marker_0391')
-const spawnMarkerIdx = level15.entities.findIndex((entity) => entity === spawnMarker)
-level15.entities.splice(spawnMarkerIdx, 1)
+  const spawnMarker = map.entities.findByRef('marker_0391')
+  const spawnMarkerIdx = map.entities.findIndex((entity) => entity === spawnMarker)
+  map.entities.splice(spawnMarkerIdx, 1)
+}
 
 // ------------------------------------------------
 // making the water wheel rotate
@@ -34,7 +33,7 @@ const axleBox = new Box3(
   new Vector3(8045 + 101, 1355 - 100, 9120 - 100),
 )
 
-const waterWheelPolygons = $(level15.polygons)
+const waterWheelPolygons = $(map.polygons)
   .selectWithinBox(wheelBox)
   .selectBy((polygon) => {
     if (polygon.texture === undefined) {
@@ -46,7 +45,7 @@ const waterWheelPolygons = $(level15.polygons)
   })
   .delete()
 
-const axlePolygons = $(level15.polygons)
+const axlePolygons = $(map.polygons)
   .clearSelection()
   .selectWithinBox(axleBox)
   .selectBy((p) => {
@@ -96,12 +95,12 @@ waterWheel.script?.on('init', () => {
   return `${loop(1000 / fps, Infinity)} rotate ${-360 / fps / fullRevolutionTimeInSec} 0 0`
 })
 
-level15.entities.push(waterWheel)
+map.entities.push(waterWheel)
 
 // ------------------------------------------------
 // finalizing
 
-level15.finalize()
-await level15.saveToDisk(level15Settings)
+map.finalize()
+await map.saveToDisk(settings)
 
 console.log('done')
