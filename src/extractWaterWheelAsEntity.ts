@@ -95,5 +95,9 @@ export const extractWaterWheelAsEntity = (map: ArxMap) => {
     return `${timer}`
   })
 
+  waterWheel.script?.on('game_ready', () => {
+    return `sendevent rotate_start self nop`
+  })
+
   return waterWheel
 }
